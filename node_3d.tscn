@@ -10,10 +10,36 @@ size = Vector3(30.255798, 0.1, 20)
 [sub_resource type="BoxMesh" id="BoxMesh_i1h28"]
 size = Vector3(20, 0.1, 20)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_dlf1y"]
+size = Vector3(5, 10, 5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_01glp"]
+size = Vector3(5, 10, 5)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_a202f"]
+sky_top_color = Color(0, 0, 0, 1)
+sky_horizon_color = Color(0, 0, 0, 1)
+sky_energy_multiplier = 5.8
+sky_cover_modulate = Color(0, 0, 0, 1)
+ground_bottom_color = Color(0, 0, 0, 1)
+ground_horizon_color = Color(0.025268134, 0.031694904, 0.06661213, 1)
+sun_angle_max = 21.0
+energy_multiplier = 0.0
+
+[sub_resource type="Sky" id="Sky_a202f"]
+sky_material = SubResource("ProceduralSkyMaterial_a202f")
+
+[sub_resource type="Environment" id="Environment_a202f"]
+background_mode = 2
+background_energy_multiplier = 2.63
+sky = SubResource("Sky_a202f")
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0172
+
 [node name="Node3D" type="Node3D" unique_id=2046921126]
 
 [node name="Player" type="CharacterBody3D" parent="." unique_id=631049625 node_paths=PackedStringArray("_camera")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6327481, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.331653, 0.6327481, 0)
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
@@ -36,3 +62,32 @@ shape = SubResource("BoxShape3D_i1h28")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Floor" unique_id=1418142072]
 transform = Transform3D(1.5106413, 0, 0, 0, 1, 0, 0, 0, 1, -0.009871261, 0.06829345, -0.013860881)
 mesh = SubResource("BoxMesh_i1h28")
+
+[node name="Wall" type="StaticBody3D" parent="." unique_id=556693978]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.0740676, 1.4325085, 0.5431609)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall" unique_id=169923127]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.80558777, 3.3515253, -0.5004587)
+shape = SubResource("BoxShape3D_dlf1y")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wall" unique_id=1596353667]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8314738, 3.3657093, -0.47528172)
+mesh = SubResource("BoxMesh_01glp")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1740659341]
+environment = SubResource("Environment_a202f")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1234180728]
+transform = Transform3D(0.91140735, 0.28925708, -0.29268906, 0.02896505, 0.66440606, 0.7468102, 0.4104846, -0.6891261, 0.5971663, 0, 0, 0)
+light_color = Color(0, 0, 0, 1)
+light_energy = 0.09
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1732346222]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.81865263, 5.974697, 2.6011858)
+light_color = Color(0.7666916, 0.48362875, 0.36978745, 1)
+light_specular = 1.399
+shadow_enabled = true
+shadow_bias = 0.0
+shadow_blur = 2.854
+omni_range = 16.762
+omni_attenuation = -0.012
