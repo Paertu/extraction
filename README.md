@@ -17,3 +17,9 @@ A singleplayer extraction shooter set in an alternate 19th century Estonia.
       
 ## Level(s) & Aesthetics
 * Dark & mildly depressing core aesthetic.
+
+## Texture & Asset Sources
+
+[Tree Model Source](https://polyhaven.com/a/fir_tree_01)
+
+[Dirt Texture Source](https://polyhaven.com/a/coast_sand_rocks_02)
