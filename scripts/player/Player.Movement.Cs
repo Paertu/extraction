@@ -5,7 +5,10 @@ public partial class Player : CharacterBody3D
     public const float Speed = 5.0f;
     public const float JumpVelocity = 4.5f;
 	public float MouseSensitivity = 0.005f;
+    public float PlayerStandingHeight = 1.5f;
+    public float PlayerCrouchHeight = 0.1f;
     [Export] private Camera3D _camera;
+    [Export] private CollisionShape3D _CollisionShape;
     private float _CameraPitch = 0.0f;
     private float _MaxCameraPitch = 1.5f;
 
@@ -35,6 +38,17 @@ public partial class Player : CharacterBody3D
         {
             velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
             velocity.Z = Mathf.MoveToward(Velocity.Z, 0, Speed);
+        }
+
+        if (Input.IsActionPressed("Crouch"))
+        {
+            var capsule = _CollisionShape.Shape as CapsuleShape3D;
+            capsule.Height = PlayerCrouchHeight;
+        }
+        else
+        {
+            var capsule = _CollisionShape.Shape as CapsuleShape3D;
+            capsule.Height = Mathf.Lerp(capsule.Height, PlayerStandingHeight, 0.1f);   
         }
 
         Velocity = velocity;

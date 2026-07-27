@@ -38,20 +38,21 @@ volumetric_fog_density = 0.0172
 
 [node name="Node3D" type="Node3D" unique_id=2046921126]
 
-[node name="Player" type="CharacterBody3D" parent="." unique_id=631049625 node_paths=PackedStringArray("_camera")]
+[node name="Player" type="CharacterBody3D" parent="." unique_id=631049625 node_paths=PackedStringArray("_camera", "_CollisionShape")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.331653, 0.6327481, 0)
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
 script = ExtResource("1_a202f")
 _camera = NodePath("Camera3D")
+_CollisionShape = NodePath("CollisionShape3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player" unique_id=130372048]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.028849, 0)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 1.028849, 0)
 shape = SubResource("CapsuleShape3D_i1h28")
 
 [node name="Camera3D" type="Camera3D" parent="Player" unique_id=990033867]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.115377, -0.042280376)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.656479, -0.042280376)
 
 [node name="Floor" type="StaticBody3D" parent="." unique_id=2038075220]
 
@@ -67,7 +68,7 @@ mesh = SubResource("BoxMesh_i1h28")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.0740676, 1.4325085, 0.5431609)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Wall" unique_id=169923127]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.80558777, 3.3515253, -0.5004587)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.82625914, 3.3515253, -0.46781158)
 shape = SubResource("BoxShape3D_dlf1y")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Wall" unique_id=1596353667]
