@@ -3,8 +3,9 @@ using Godot;
 public partial class Player : CharacterBody3D
 {
     private const float MaximumSpeed = 10.0f;
-    private float _CurrentSpeed = 5.0f;
+    public float _CurrentSpeed { get; private set; } = 5.0f;
     private const float MinimumSpeed = 1.0f;
+    private const float SpeedIncrement = 0.5f;
 
     public const float JumpVelocity = 4.5f;
 
@@ -67,12 +68,12 @@ public partial class Player : CharacterBody3D
 
         if (Input.IsActionJustReleased("ScrollUp") && _CurrentSpeed <= MaximumSpeed)
         {
-            _CurrentSpeed += 0.25f;
+            _CurrentSpeed += SpeedIncrement;
         }
 
         if (Input.IsActionJustReleased("ScrollDown")  && _CurrentSpeed >= MinimumSpeed)
         {
-            _CurrentSpeed -= 0.25f;
+            _CurrentSpeed -= SpeedIncrement;
         }
 
         Velocity = velocity;

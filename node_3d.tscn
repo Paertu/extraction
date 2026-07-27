@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://d3oajf342e72b"]
 
 [ext_resource type="Script" uid="uid://gpik83jqmiro" path="res://scripts/player/Player.cs" id="1_a202f"]
+[ext_resource type="Script" uid="uid://bxwde6qsq0ow2" path="res://scripts/hud/Hud.cs" id="2_noarx"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_i1h28"]
 
@@ -92,3 +93,12 @@ shadow_bias = 0.0
 shadow_blur = 2.854
 omni_range = 16.762
 omni_attenuation = -0.012
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=530249745 node_paths=PackedStringArray("_Player", "_SpeedLabel")]
+script = ExtResource("2_noarx")
+_Player = NodePath("../Player")
+_SpeedLabel = NodePath("Label")
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=1467988022]
+offset_right = 40.0
+offset_bottom = 23.0
