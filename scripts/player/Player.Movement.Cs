@@ -10,7 +10,9 @@ public partial class Player : CharacterBody3D
 
 	public float MouseSensitivity = 0.005f;
     public float PlayerStandingHeight = 1.5f;
-    public float PlayerCrouchHeight = 0.1f;
+    public float PlayerCrouchHeight = 0.5f;
+    public float PlayerProneHeight = 0.001f;
+
 
     [Export] private Camera3D _camera;
 
@@ -50,7 +52,12 @@ public partial class Player : CharacterBody3D
         if (Input.IsActionPressed("Crouch"))
         {
             var capsule = _CollisionShape.Shape as CapsuleShape3D;
-            capsule.Height = PlayerCrouchHeight;
+            capsule.Height = Mathf.Lerp(capsule.Height, PlayerCrouchHeight, 0.1f); 
+        }
+        else if (Input.IsActionPressed("Prone"))
+        {
+            var capsule = _CollisionShape.Shape as CapsuleShape3D;
+            capsule.Height = Mathf.Lerp(capsule.Height, PlayerProneHeight, 0.1f); 
         }
         else
         {
