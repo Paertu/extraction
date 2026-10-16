@@ -2,18 +2,18 @@ using Godot;
 
 public partial class Player : CharacterBody3D
 {
-    private const float MaximumSpeed = 10.0f;
     public float _CurrentSpeed { get; private set; } = 5.0f;
+    
+    private const float MaximumSpeed = 10.0f;
     private const float MinimumSpeed = 1.0f;
     private const float SpeedIncrement = 0.5f;
-
     public const float JumpVelocity = 4.5f;
 
 	public float MouseSensitivity = 0.005f;
+
     public float PlayerStandingHeight = 1.5f;
     public float PlayerCrouchHeight = 0.5f;
     public float PlayerProneHeight = 0.001f;
-
 
     [Export] private Camera3D _camera;
 

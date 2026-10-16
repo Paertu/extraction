@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://gpik83jqmiro" path="res://scripts/player/Player.cs" id="1_a202f"]
 [ext_resource type="Script" uid="uid://bxwde6qsq0ow2" path="res://scripts/hud/Hud.cs" id="2_noarx"]
+[ext_resource type="Script" uid="uid://bt80m4af8cakg" path="res://scripts/core/ShadowCheck.cs" id="3_a0tk4"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_i1h28"]
 
@@ -141,7 +142,7 @@ show_checkered = true
 top_level = true
 metadata/_edit_lock_ = true
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Environment Folder" unique_id=1732346222]
+[node name="OmniLight3D" type="OmniLight3D" parent="Environment Folder" unique_id=1732346222 node_paths=PackedStringArray("_player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.81865263, 5.974697, 2.6011858)
 light_color = Color(0.8039661, 0.4617824, 0.3145186, 1)
 light_specular = 1.399
@@ -152,6 +153,8 @@ shadow_blur = 0.0
 distance_fade_enabled = true
 omni_range = 24.5
 omni_attenuation = -0.012
+script = ExtResource("3_a0tk4")
+_player = NodePath("../../Player Folder/Player")
 
 [node name="Wall" type="StaticBody3D" parent="Environment Folder" unique_id=556693978]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.012239, 2.8440142, -2.1011052)
