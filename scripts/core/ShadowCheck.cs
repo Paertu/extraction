@@ -20,6 +20,7 @@ public partial class ShadowCheck : OmniLight3D
 		_planeMaterial = new StandardMaterial3D();
 		_planeMeshInstance.MaterialOverride = _planeMaterial;
 		_planeMaterial.ShadingMode = StandardMaterial3D.ShadingModeEnum.Unshaded;
+		
 		AddChild(_planeMeshInstance);
 		_lampPosition = _planeMeshInstance.GlobalPosition;
 	}
@@ -28,10 +29,7 @@ public partial class ShadowCheck : OmniLight3D
 	public override void _Process(double delta)
 	{
 		var playerLocation = _player.GlobalPosition;
-		_planeMeshInstance.LookAt(playerLocation);
-		var dist = _lampPosition.DistanceTo(playerLocation);
-		_planeMeshInstance.Scale = new Vector3(0.1f, 1.5f, dist);
-
+		DrawDebugStealthCheckBeam(playerLocation);
 		_planeMaterial.AlbedoColor = Colors.Red;
 
 		var spaceState = GetWorld3D().DirectSpaceState;
@@ -53,5 +51,12 @@ public partial class ShadowCheck : OmniLight3D
 				GD.Print(isHidden);
 			}
 		}
+	}
+
+	public void DrawDebugStealthCheckBeam(Vector3 targetLocation)
+	{
+		_planeMeshInstance.LookAt(targetLocation);
+		var dist = _lampPosition.DistanceTo(targetLocation);
+		_planeMeshInstance.Scale = new Vector3(0.1f, 1.5f, dist);
 	}
 }
