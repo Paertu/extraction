@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://bxwde6qsq0ow2" path="res://scripts/hud/Hud.cs" id="2_noarx"]
 [ext_resource type="Script" uid="uid://bt80m4af8cakg" path="res://scripts/core/ShadowCheck.cs" id="3_a0tk4"]
 [ext_resource type="PackedScene" uid="uid://prubgh7odcu2" path="res://assets/maps/test.glb" id="4_r3fl7"]
+[ext_resource type="Script" uid="uid://3twe0x8he2rf" path="res://scripts/character/Guard.cs" id="5_jka67"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_i1h28"]
 
@@ -30,6 +31,10 @@ sdfgi_enabled = true
 volumetric_fog_enabled = true
 volumetric_fog_density = 0.0093
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_01glp"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_i1h28"]
+
 [node name="Node3D" type="Node3D" unique_id=2046921126]
 
 [node name="Player Folder" type="Node" parent="." unique_id=389909918]
@@ -44,7 +49,7 @@ offset_right = 40.0
 offset_bottom = 23.0
 
 [node name="Player" type="CharacterBody3D" parent="Player Folder" unique_id=631049625 node_paths=PackedStringArray("_camera", "_CollisionShape")]
-transform = Transform3D(-1.2259665, 0, -0.8642952, 0, 1.5, 0, 0.8642952, 0, -1.2259665, 15.95222, 5.668091, -56.904526)
+transform = Transform3D(-1.2259665, 0, -0.8642952, 0, 1.5, 0, 0.8642952, 0, -1.2259665, 12.312691, 1.0870934, -6.4194756)
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
@@ -108,3 +113,17 @@ _player = NodePath("../../Player Folder/Player")
 
 [node name="test" parent="Tutorial Map" unique_id=1642417033 instance=ExtResource("4_r3fl7")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+
+[node name="AICharacter" type="Node" parent="." unique_id=1816841113]
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="AICharacter" unique_id=903990216]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -15.951162, 3.1092987, -19.570644)
+script = ExtResource("5_jka67")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AICharacter/CharacterBody3D" unique_id=621229603]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, -0.22090721, 0)
+shape = SubResource("CapsuleShape3D_01glp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="AICharacter/CharacterBody3D" unique_id=1529582205]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -0.0009326935, -0.21626997, -0.0039048195)
+mesh = SubResource("CapsuleMesh_i1h28")
