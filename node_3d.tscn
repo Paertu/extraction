@@ -1,8 +1,9 @@
-[gd_scene format=3 uid="uid://d3oajf342e72b"]
+[gd_scene format=3 uid="uid://babuljtj1itfd"]
 
 [ext_resource type="Script" uid="uid://gpik83jqmiro" path="res://scripts/player/Player.cs" id="1_a202f"]
 [ext_resource type="Script" uid="uid://bxwde6qsq0ow2" path="res://scripts/hud/Hud.cs" id="2_noarx"]
 [ext_resource type="Script" uid="uid://bt80m4af8cakg" path="res://scripts/core/ShadowCheck.cs" id="3_a0tk4"]
+[ext_resource type="PackedScene" uid="uid://prubgh7odcu2" path="res://assets/maps/test.glb" id="4_r3fl7"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_i1h28"]
 
@@ -23,77 +24,11 @@ sky_material = SubResource("ProceduralSkyMaterial_a202f")
 background_mode = 2
 background_energy_multiplier = 2.63
 sky = SubResource("Sky_a202f")
+ssao_enabled = true
+ssao_radius = 16.0
+sdfgi_enabled = true
 volumetric_fog_enabled = true
-volumetric_fog_density = 0.0172
-
-[sub_resource type="Gradient" id="Gradient_noarx"]
-offsets = PackedFloat32Array(0.2, 1)
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_a0tk4"]
-noise_type = 2
-frequency = 0.03
-cellular_jitter = 3.0
-cellular_return_type = 0
-domain_warp_enabled = true
-domain_warp_type = 1
-domain_warp_amplitude = 50.0
-domain_warp_fractal_type = 2
-domain_warp_fractal_lacunarity = 1.5
-domain_warp_fractal_gain = 1.0
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_r3fl7"]
-noise = SubResource("FastNoiseLite_a0tk4")
-color_ramp = SubResource("Gradient_noarx")
-seamless = true
-
-[sub_resource type="Terrain3DMaterial" id="Terrain3DMaterial_jka67"]
-_shader_parameters = {
-&"bias_distance": null,
-&"blend_sharpness": null,
-&"depth_blur": null,
-&"enable_macro_variation": null,
-&"enable_projection": null,
-&"flat_terrain_normals": null,
-&"macro_variation1": null,
-&"macro_variation2": null,
-&"macro_variation_slope": null,
-&"mipmap_bias": null,
-&"noise1_angle": null,
-&"noise1_offset": null,
-&"noise1_scale": null,
-&"noise2_scale": null,
-&"noise_texture": SubResource("NoiseTexture2D_r3fl7"),
-&"projection_threshold": null
-}
-show_checkered = true
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a0tk4"]
-transparency = 4
-cull_mode = 2
-vertex_color_use_as_albedo = true
-backlight_enabled = true
-backlight = Color(0.5, 0.5, 0.5, 1)
-distance_fade_mode = 1
-distance_fade_min_distance = 128.0
-distance_fade_max_distance = 96.0
-
-[sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_r3fl7"]
-generated_type = 1
-height_offset = 0.5
-material_override = SubResource("StandardMaterial3D_a0tk4")
-last_lod = 0
-last_shadow_lod = 0
-lod0_range = 128.0
-
-[sub_resource type="Terrain3DAssets" id="Terrain3DAssets_jsk3o"]
-mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_r3fl7")])
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_dlf1y"]
-size = Vector3(5.0283203, 10, 5.027832)
-
-[sub_resource type="BoxMesh" id="BoxMesh_01glp"]
-size = Vector3(5, 10, 5)
+volumetric_fog_density = 0.0093
 
 [node name="Node3D" type="Node3D" unique_id=2046921126]
 
@@ -109,7 +44,7 @@ offset_right = 40.0
 offset_bottom = 23.0
 
 [node name="Player" type="CharacterBody3D" parent="Player Folder" unique_id=631049625 node_paths=PackedStringArray("_camera", "_CollisionShape")]
-transform = Transform3D(-1.2259665, 0, -0.8642952, 0, 1.5, 0, 0.8642952, 0, -1.2259665, -13.694373, 5.66809, -14.021154)
+transform = Transform3D(-1.2259665, 0, -0.8642952, 0, 1.5, 0, 0.8642952, 0, -1.2259665, 15.95222, 5.668091, -56.904526)
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
@@ -123,6 +58,7 @@ shape = SubResource("CapsuleShape3D_i1h28")
 
 [node name="Camera3D" type="Camera3D" parent="Player Folder/Player" unique_id=990033867]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.656479, -0.042280376)
+fov = 88.1
 
 [node name="Environment Folder" type="Node" parent="." unique_id=282444045]
 
@@ -130,39 +66,45 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.656479, -0.042280376)
 environment = SubResource("Environment_a202f")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment Folder" unique_id=1234180728]
-transform = Transform3D(0.91140735, 0.2892572, -0.29268906, 0.02896505, 0.6644061, 0.7468102, 0.4104846, -0.6891261, 0.5971663, 0, 0, 0)
+transform = Transform3D(0.91140735, 0.2892572, -0.29268906, 0.02896505, 0.6644062, 0.7468102, 0.4104846, -0.68912613, 0.5971663, 0, 21.315067, 0)
 light_color = Color(0, 0, 0, 1)
 light_energy = 0.09
-
-[node name="Terrain3D" type="Terrain3D" parent="Environment Folder" unique_id=233933170]
-data_directory = "res://scenes/tutorial"
-material = SubResource("Terrain3DMaterial_jka67")
-assets = SubResource("Terrain3DAssets_jsk3o")
-show_checkered = true
-top_level = true
-metadata/_edit_lock_ = true
+shadow_enabled = true
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Environment Folder" unique_id=1732346222 node_paths=PackedStringArray("_player")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.81865263, 5.974697, 2.6011858)
-light_color = Color(0.8039661, 0.4617824, 0.3145186, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.160498, 13.167852, 26.491383)
 light_specular = 1.399
 shadow_enabled = true
 shadow_bias = 0.0
 shadow_reverse_cull_face = true
 shadow_blur = 0.0
 distance_fade_enabled = true
-omni_range = 24.5
+distance_fade_begin = 4096.0
+distance_fade_shadow = 4096.0
+distance_fade_length = 4096.0
+omni_range = 82.628
 omni_attenuation = -0.012
 script = ExtResource("3_a0tk4")
 _player = NodePath("../../Player Folder/Player")
 
-[node name="Wall" type="StaticBody3D" parent="Environment Folder" unique_id=556693978]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.012239, 2.8440142, -2.1011052)
+[node name="OmniLight3D2" type="OmniLight3D" parent="Environment Folder" unique_id=1221600114 node_paths=PackedStringArray("_player")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.204241, 11.949394, -27.904728)
+light_color = Color(0.94574386, 0.9824566, 0.98517114, 1)
+light_specular = 1.399
+shadow_enabled = true
+shadow_bias = 0.0
+shadow_reverse_cull_face = true
+shadow_blur = 0.0
+distance_fade_enabled = true
+distance_fade_begin = 4096.0
+distance_fade_shadow = 4096.0
+distance_fade_length = 4096.0
+omni_range = 60.005
+omni_attenuation = -0.012
+script = ExtResource("3_a0tk4")
+_player = NodePath("../../Player Folder/Player")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment Folder/Wall" unique_id=169923127]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.83065367, 3.3515253, -0.4817276)
-shape = SubResource("BoxShape3D_dlf1y")
+[node name="Tutorial Map" type="Node" parent="." unique_id=1025315886]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment Folder/Wall" unique_id=1596353667]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8314738, 3.3657093, -0.47528172)
-mesh = SubResource("BoxMesh_01glp")
+[node name="test" parent="Tutorial Map" unique_id=1642417033 instance=ExtResource("4_r3fl7")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
